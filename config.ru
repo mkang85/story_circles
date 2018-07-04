@@ -5,4 +5,6 @@ require './config/environment'
 # end
 
 use Rack::MethodOverride
+use UserController
+use CircleController
 run ApplicationController
