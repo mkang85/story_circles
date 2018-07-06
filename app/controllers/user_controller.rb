@@ -8,7 +8,6 @@ class UserController < ApplicationController
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect :'/signup'
     end
-    binding.pry
     @user = User.create(params)
     session[:user_id] = @user.id
     redirect :'/circles'
