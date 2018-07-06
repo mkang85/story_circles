@@ -18,11 +18,11 @@ class CircleController < ApplicationController
 end
 
   post '/circles' do
-    if params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
+    if params[:hero].include?("")
       redirect to '/circles/new'
     else
-      binding.pry
-      @circle = Circle.create(params)
+      @circle = Circle.create(you: params["hero"][0], need: params["hero"][1], go: params["hero"][2], search: params["hero"][3], find: params["hero"][4], take: params["hero"][5], return: params["hero"][6], change: params["hero"][7], user_id: session[:user_id])
+      erb :'/circles/show'
     end
   end
 
