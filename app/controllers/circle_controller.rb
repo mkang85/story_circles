@@ -27,4 +27,22 @@ end
     end
   end
 
+  get '/circles/:id' do
+  if !session[:user_id]
+    redirect to '/login'
+  else
+  @circle = Circle.find(params[:id])
+  erb :'/circles/show'
+  end
+end
+
+get '/circles/:id/edit' do
+  if !session[:user_id]
+  redirect to '/login'
+  else
+    @circle = Circle.find(params[:id])
+    erb :'/circles/edit'
+  end
+end
+
 end

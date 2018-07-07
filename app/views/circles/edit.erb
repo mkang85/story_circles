@@ -1,0 +1,14 @@
+<form class="" action="/circles/<%=@circle.id%>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <ol>
+      <li><label>YOU: </label>  <input type="text" name="you" value="<%=@circle.you%>"></li>
+      <li><label>NEED: </label>  <input type="text" name="need" value="<%=@circle.need%>"></li>
+      <li><label>GO: </label>  <input type="text" name="go" value="<%=@circle.go%>"></li>
+      <li><label>SEARCH: </label>  <input type="text" name="search" value="<%=@circle.search%>"></li>
+      <li><label>FIND: </label>  <input type="text" name="find" value="<%=@circle.find%>"></li>
+      <li><label>TAKE: </label>  <input type="text" name="take" value="<%=@circle.take%>"></li>
+      <li><label>RETURN: </label>  <input type="text" name="return" value="<%=@circle.return%>"></li>
+      <li><label>CHANGE: </label>  <input type="text" name="change" value="<%=@circle.change%>"></li>
+    </ol>
+    <input type="submit" name="submit" value="submit">
+</form>

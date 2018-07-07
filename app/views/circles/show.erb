@@ -1,10 +1,15 @@
-<ol>
-  <li><b>YOU</b> - <%=@circle.you%></li>
-  <li><b>NEED</b> - <%=@circle.need%></li>
-  <li><b>GO</b> - <%=@circle.go%></li>
-  <li><b>SEARCH</b> - <%=@circle.search%></li>
-  <li><b>FIND</b> - <%=@circle.find%></li>
-  <li><b>TAKE</b> - <%=@circle.take%></li>
-  <li><b>RETURN</b> - <%=@circle.return%></li>
-  <li><b>CHANGE</b> - <%=@circle.change%></li>
-</ol>
+  <ol>
+    <li><b>YOU</b> - <%=@circle.you%></li>
+    <li><b>NEED</b> - <%=@circle.need%></li>
+    <li><b>GO</b> - <%=@circle.go%></li>
+    <li><b>SEARCH</b> - <%=@circle.search%></li>
+    <li><b>FIND</b> - <%=@circle.find%></li>
+    <li><b>TAKE</b> - <%=@circle.take%></li>
+    <li><b>RETURN</b> - <%=@circle.return%></li>
+    <li><b>CHANGE</b> - <%=@circle.change%></li>
+  </ol>
+  <form class="" action="/circles/<%=@circle.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Circle">
+  </form>
+  <a href="/circles/<%=@circle.id%>/edit">Edit Circle</a>
