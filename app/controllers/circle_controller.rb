@@ -45,4 +45,34 @@ get '/circles/:id/edit' do
   end
 end
 
+
+patch '/circles/:id' do
+  @circle = Circle.find(params[:id])
+  if params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
+    redirect to "/circles/#{@circle.id}/edit"
+  else
+  @circle.you = params[:you]
+  @circle.need = params[:need]
+  @circle.go = params[:go]
+  @circle.search = params[:search]
+  @circle.find = params[:find]
+  @circle.take = params[:take]
+  @circle.return = params[:return]
+  @circle.change = params[:change]
+  @circle.save
+  redirect to "/circles/#{@circle.id}"
+  end
+end
+
+delete '/circles/:id' do
+  binding.pry
+  @user = User.find_by(session[:user_id])
+  @circle = Circle.find(params[:id])
+  if session[:user_id] && @user.circles.include?(@circle)
+  @circle.destroy
+  else
+  puts "Sorry, cannot delete circle"
+  end
+end
+
 end
