@@ -3,7 +3,6 @@ class CircleController < ApplicationController
     if !session[:user_id]
       redirect :'/login'
     else
-      binding.pry
       @circles = Circle.all
       @user = User.find(session[:user_id])
       erb :'/circles/index'
