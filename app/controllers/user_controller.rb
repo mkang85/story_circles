@@ -21,10 +21,26 @@ class UserController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user &&  @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to '/circles'
+       redirect to '/users/show'
     else
       redirect to :'/signup'
   end
+end
+
+get '/users/show' do
+    if !session[:user_id]
+      redirect :'/login'
+    else
+      binding.pry
+      @circles = Circle.all
+      @user = User.find(session[:user_id])
+      erb :'/users/show'
+  end
+end
+
+get '/logout' do
+  session.clear
+  redirect :'/login'
 end
 
 end
