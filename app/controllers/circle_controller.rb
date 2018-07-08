@@ -64,15 +64,16 @@ patch '/circles/:id' do
   end
 end
 
-delete '/circles/:id' do
-  binding.pry
-  @user = User.find_by(session[:user_id])
-  @circle = Circle.find(params[:id])
-  if session[:user_id] && @user.circles.include?(@circle)
-  @circle.destroy
-  else
-  puts "Sorry, cannot delete circle"
-  end
-end
+# delete '/circles/:id' do
+#   binding.pry
+#   @user = User.find_by(session[:user_id])
+#   @circle = Circle.find(params[:id])
+#   binding.pry
+#   if session[:user_id] && @user.circles.include?(@circle)
+#   @circle.destroy
+#   else
+#   puts "Sorry, cannot delete circle"
+#   end
+# end
 
 end

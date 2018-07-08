@@ -13,4 +13,8 @@ class UserController < ApplicationController
     redirect :'/circles'
   end
 
+  get '/login' do
+    erb :'/users/login'
+  end
+
 end
