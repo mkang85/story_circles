@@ -1,6 +1,7 @@
 class UserController < ApplicationController
 
   get '/signup' do
+    binding.pry
     if session[:user_id]
       redirect :'/circles'
     end
@@ -35,6 +36,12 @@ class UserController < ApplicationController
   end
 end
 
+get "/users/:slug" do
+  binding.pry
+  @user = User.find_by_slug(params[:slug])
+  @circles = @user.circles
+  erb :'/users/homepage'
+  end
 
 
 get '/logout' do

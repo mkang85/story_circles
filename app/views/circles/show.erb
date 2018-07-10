@@ -1,3 +1,4 @@
+<h1>Great Work, Here's your Story Circle:</h1>
   <ol>
     <li><b>YOU</b> - <%=@circle.you%></li>
     <li><b>NEED</b> - <%=@circle.need%></li>
@@ -12,5 +13,10 @@
   <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Circle">
   </form>
-  <a href="/circles/<%=@circle.id%>/edit">Edit Circle</a></br>
-<a href="/circles">Back to Homepage</a>
+<form class="" action="/circles/<%=@circle.id%>/edit" method="get">
+  <input type="submit" value="Edit">
+</form>
+
+<form class="" action="/circles" method="get">
+  <input type="submit" value="Back to Mainpage">
+</form>

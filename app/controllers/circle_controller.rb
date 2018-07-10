@@ -21,8 +21,7 @@ end
     if params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
       redirect to '/circles/new'
     else
-      @circle = Circle.create(params)
-      @circle.user_id = session[:user_id]
+      @circle = Circle.create(you: params[:you], need: params[:need], go: params[:go], search: params[:search], find: params[:find], take: params[:take], return: params[:return], change: params[:change], user_id: session[:user_id])
       erb :'/circles/show'
     end
   end

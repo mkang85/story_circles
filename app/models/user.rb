@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :circles
   has_secure_password
-
+  has_many :circles
   def slug
   username.downcase.split(" ").join("-")
 end

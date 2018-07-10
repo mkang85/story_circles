@@ -1,4 +1,4 @@
-<h1>Welcome <%=@user.username%>!</h1>
+<h1>Here's your homepage: <%=@user.username%>!</h1>
 
 <%@circles.each do |circle|%>
 <ol>
@@ -11,10 +11,8 @@
   <li><b>RETURN</b> - <%=circle.return%></li>
   <li><b>CHANGE</b> - <%=circle.change%></li>
 </ol>
-  <%=circle.user.username%>
 <%end%></br>
 
 <a href="/circles/new">Create a new Circle</a></br>
 <a href="/logout">Logout</a></br>
 <a href="/users/<%=@user.slug%>">Homepage</a>
-<h2>circles - index page</h2>
