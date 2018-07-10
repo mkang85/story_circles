@@ -1,6 +1,7 @@
 class CreateCircles < ActiveRecord::Migration[5.2]
   def change
     create_table :circles do |t|
+      t.string :title
       t.string :you
       t.string :need
       t.string :go

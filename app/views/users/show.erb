@@ -1,6 +1,7 @@
 <h1>Welcome <%=@user.username%>!</h1>
 
 <%@circles.each do |circle|%>
+<h3><%=circle.title%></h3>
 <ol>
   <li><b>YOU</b> - <%=circle.you%></li>
   <li><b>NEED</b> - <%=circle.need%></li>

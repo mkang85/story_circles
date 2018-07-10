@@ -1,7 +1,6 @@
 class UserController < ApplicationController
 
   get '/signup' do
-    binding.pry
     if session[:user_id]
       redirect :'/circles'
     end

@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_07_03_232422) do
 
   create_table "circles", force: :cascade do |t|
+    t.string "title"
     t.string "you"
     t.string "need"
     t.string "go"

@@ -18,10 +18,10 @@ class CircleController < ApplicationController
 end
 
   post '/circles' do
-    if params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
+    if params[:title].empty? || params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
       redirect to '/circles/new'
     else
-      @circle = Circle.create(you: params[:you], need: params[:need], go: params[:go], search: params[:search], find: params[:find], take: params[:take], return: params[:return], change: params[:change], user_id: session[:user_id])
+      @circle = Circle.create(title: params[:title], you: params[:you], need: params[:need], go: params[:go], search: params[:search], find: params[:find], take: params[:take], return: params[:return], change: params[:change], user_id: session[:user_id])
       erb :'/circles/show'
     end
   end
@@ -47,9 +47,10 @@ end
 
 patch '/circles/:id' do
   @circle = Circle.find(params[:id])
-  if params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
+  if params[:title].empty? || params[:you].empty? || params[:need].empty? || params[:go].empty? || params[:search].empty? || params[:find].empty? || params[:take].empty? || params[:return].empty? || params[:change].empty? || !session[:user_id]
     redirect to "/circles/#{@circle.id}/edit"
   else
+  @circle.title = params[:title]
   @circle.you = params[:you]
   @circle.need = params[:need]
   @circle.go = params[:go]
@@ -63,16 +64,15 @@ patch '/circles/:id' do
   end
 end
 
-# delete '/circles/:id' do
-#   binding.pry
-#   @user = User.find_by(session[:user_id])
-#   @circle = Circle.find(params[:id])
-#   binding.pry
-#   if session[:user_id] && @user.circles.include?(@circle)
-#   @circle.destroy
-#   else
-#   puts "Sorry, cannot delete circle"
-#   end
-# end
+delete '/circles/:id' do
+  @user = User.find(session[:user_id])
+  @circle = Circle.find(params[:id])
+    if session[:user_id] && @user.circles.include?(@circle)
+      @circle.destroy
+    else
+      puts "Sorry, cannot delete circle."
+    end
+    redirect to "/circles"
+end
 
 end

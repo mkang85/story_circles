@@ -1,6 +1,7 @@
 <form class="" action="/circles/<%=@circle.id%>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <ol>
+      <li><label>TITLE:</label> <input type="text" name="title" value="<%=@circle.title%>"></li>
       <li><label>YOU: </label>  <input type="text" name="you" value="<%=@circle.you%>"></li>
       <li><label>NEED: </label>  <input type="text" name="need" value="<%=@circle.need%>"></li>
       <li><label>GO: </label>  <input type="text" name="go" value="<%=@circle.go%>"></li>
