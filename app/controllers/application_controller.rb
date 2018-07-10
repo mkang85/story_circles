@@ -13,4 +13,8 @@ class ApplicationController < Sinatra::Base
     redirect to :'/circles'
   end
 
+  get '/info' do
+    erb :'/info'
+  end
+
 end
