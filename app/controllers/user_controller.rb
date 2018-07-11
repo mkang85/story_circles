@@ -9,6 +9,7 @@ class UserController < ApplicationController
 
   post '/signup' do
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
+         flash[:message] = "Please fill all fields!"
       redirect :'/signup'
     end
     User.all.each do |user|
