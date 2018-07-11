@@ -6,7 +6,7 @@ a simple diagram to chart out stories.
 He suggests that all stories (at least the good ones) follow the same steps of the
 "Hero's Journey" that Joseph Campbell outlined in "The Hero with A Thousand Faces."
 
-Here are the steps:
+Here are Dan Harmon's story circle steps:
 
 1. YOU - the protagonist are in a position of comfort.
 1. NEED - you wish to change your position.
@@ -22,4 +22,4 @@ To run this application, all you need to do is to clone it and run:
 
 After that, run shotgun and copy the url in the terminal into your browser.
 
-Once you've created an account, you can start making story circles and see past ones.
+Once you've created an account, you can start making new story circles and see past ones.

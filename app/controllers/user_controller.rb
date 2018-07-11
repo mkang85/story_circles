@@ -11,6 +11,11 @@ class UserController < ApplicationController
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect :'/signup'
     end
+    User.all.each do |user|
+      if user.username == params[:username]
+        redirect :'/signup'
+      end
+    end
     @user = User.create(params)
     session[:user_id] = @user.id
     redirect :'/login'
@@ -22,7 +27,6 @@ class UserController < ApplicationController
     elsif session[:user_id]
       redirect to '/circles'
     end
-    erb :'/users/login'
   end
 
   post '/login' do
@@ -36,7 +40,6 @@ class UserController < ApplicationController
 end
 
 get "/users/:slug" do
-  binding.pry
   @user = User.find_by_slug(params[:slug])
   @circles = @user.circles
   erb :'/users/homepage'
