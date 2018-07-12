@@ -14,6 +14,7 @@ class UserController < ApplicationController
     end
     User.all.each do |user|
       if user.username == params[:username]
+        flash[:message] = "Sorry, a user already exists with that name. Please choose another!"
         redirect :'/signup'
       end
     end

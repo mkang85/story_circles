@@ -7,6 +7,12 @@
   </head>
   <body>
     <h1>Welcome to Story Circles!</h1>
+    <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <h2><%= flash[type] %></h2>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <% end %>
       <%=yield%></br>
       <img src="https://i0.wp.com/litchat.com/wp-content/uploads/2013/10/DanHarmon-StoryCircle.jpg" alt="Story Circle"></br>
     </br><a href="/info">-Infopage-</a><a href="/circles">-Mainpage-</a>
