@@ -1,7 +1,8 @@
 class CircleController < ApplicationController
   get '/circles' do
-    if !session[:user_id]
-      redirect :'/login'
+    if !logged_in?
+      flash[:message] = "Please login or Signup!"
+      redirect to '/login'
     else
       @circles = Circle.all
       @user = User.find(session[:user_id])
@@ -10,9 +11,11 @@ class CircleController < ApplicationController
   end
 
   get '/circles/new' do
-    if !session[:user_id]
+    if !logged_in?
+      flash[:message] = "Please login or Signup!"
       redirect to '/login'
     else
+      @user = User.find(session[:user_id])
     erb :'/circles/new'
   end
 end
@@ -23,25 +26,40 @@ end
       redirect to '/circles/new'
     else
       @circle = Circle.create(title: params[:title], you: params[:you], need: params[:need], go: params[:go], search: params[:search], find: params[:find], take: params[:take], return: params[:return], change: params[:change], user_id: session[:user_id])
+      @user = User.find(session[:user_id])
       erb :'/circles/show'
     end
   end
 
-  get '/circles/:id' do
-  if !session[:user_id]
+  get '/circles/:id' do #so far this responds to the patch request.
+  if !logged_in?
+    flash[:message] = "Please login or Signup!"
     redirect to '/login'
-  else
+  end
   @circle = Circle.find(params[:id])
+  if @circle.user_id == current_user.id
+    @user = User.find(session[:user_id])
   erb :'/circles/show'
+  else
+    @user = User.find(session[:user_id])
+    @owner = User.find(@circle.user_id)
+    flash[:message] = "Checkout #{@owner.username}'s circle here!'"
+  redirect to '/circles'
   end
 end
 
 get '/circles/:id/edit' do
-  if !session[:user_id]
+  if !logged_in?
+    flash[:message] = "Please login or Signup!"
   redirect to '/login'
-  else
+  end
     @circle = Circle.find(params[:id])
+    if @circle.user_id == current_user.id
+    @user = User.find(session[:user_id])
     erb :'/circles/edit'
+  else
+    flash[:message] = "Can't edit another user's Circle!"
+    redirect to '/login'
   end
 end
 
