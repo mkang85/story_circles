@@ -15,7 +15,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/info' do
+    if logged_in?
+    @user = User.find(session[:user_id])
     erb :'/info'
+    else
+      redirect to '/signup'
+    end
   end
 
   def logged_in?

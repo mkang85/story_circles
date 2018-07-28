@@ -1,7 +1,6 @@
 class CircleController < ApplicationController
   get '/circles' do
     if !logged_in?
-      flash[:message] = "Please login or Signup!"
       redirect to '/login'
     else
       @circles = Circle.all
