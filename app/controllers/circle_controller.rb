@@ -30,7 +30,7 @@ end
     end
   end
 
-  get '/circles/:id' do #so far this responds to the patch request.
+  get '/circles/:id' do 
   if !logged_in?
     flash[:message] = "Please login or Signup!"
     redirect to '/login'
